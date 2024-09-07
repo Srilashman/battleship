@@ -307,3 +307,8 @@ img[id="restart"] {
     border-radius: 50%;
     background-color: antiquewhite;
 }
+
+img[id="restart"]:hover {
+    cursor: pointer;
+    background-color: beige;
+}

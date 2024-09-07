@@ -38,6 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
     place_boats_msg.classList.add("place_boats_msg");
     place_boats_msg.textContent = name.toUpperCase();
     let history = []
+    const restart_button = document.getElementById("restart");
+    restart_button.addEventListener("click", function() {
+        let ret = confirm("Are you sure you want to restart?")
+        if(ret){
+            window.location.href = "index.html";
+        }
+    });
     Object.values(used).forEach(arr => {
         arr.forEach(j => {
             if(typeof j !== "boolean"){
