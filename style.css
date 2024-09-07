@@ -1,0 +1,309 @@
+.battleship-container {
+    text-align: center;
+    margin-top: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#battleship_banner {
+    animation: fadeIn 1s ease-out;
+}
+
+#battleship_banner_no_ani,
+#battleship_banner {
+    height: 200px;
+}
+
+.get-name {
+    animation: appear 2.5s ease-out;
+}
+
+body {
+    background-color: darkblue;
+}
+
+.enter-player-name {
+    font: bold;
+    font-size: larger;
+    color: antiquewhite;
+    text-align: center;
+}
+
+.name-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#name {
+    width: 300px;
+    height: 30px;
+    font: bold;
+    text-align: center;
+    border: none;
+    border-radius: 100px;
+    text-transform: uppercase;
+}
+
+#enter-name-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+}
+
+#enter-name {
+    border: none;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: white;
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+}
+
+#enter-name:hover {
+    cursor: pointer;
+}
+
+.error-msg-container {
+    display: none;
+    text-align: center;
+    margin-bottom: 15px;
+    color: red;
+}
+
+.place-boats {
+    text-align: center;
+    color: antiquewhite;
+    font-size: xx-large;
+}
+
+.board-container {
+    top: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 4 equal-width columns */
+    grid-template-rows: repeat(10, 1fr);    /* 3 equal-height rows */
+    gap: 3px;
+    grid-auto-rows: minmax(2px, auto);
+    width: 35%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the grid horizontally */
+    position: relative; /* Ensure the cards container is the reference point */
+    z-index: 1;
+}
+
+#player-board {
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+#opponent-board {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.player-name{
+    transform: translateY(7.5px);
+    color: antiquewhite;
+}
+
+.place_boats_msg {
+    text-align: center;
+}
+
+.player-container {
+    width: 510px;
+    height: 600px;
+    margin-left: 20px;
+    background-color: darkgreen;
+}
+
+.opponent-container {
+    width: 510px;
+    height: 600px;
+    transform: translateX(180px);
+    margin-left: 700px;
+    background-color: darkred;
+    margin-top: -600px;
+}
+
+.square,
+.player-square,
+.opponent-square {
+    height: 45px;
+    width: 45px;
+    display: flex;            
+    align-items: center;  
+    justify-content: center;
+    background-color: black;
+    
+}
+
+
+
+.opponent-square:hover {
+    cursor: crosshair;
+    border: 2px solid antiquewhite;
+    height: 41px;
+    width: 41px;
+}
+
+.selected {
+    cursor: default !important;
+    border: 0 !important;
+    height: 45px !important;
+    width: 45px !important;
+}
+.square:hover {
+    cursor: pointer;
+}
+
+#square0,
+#square100 {
+    border-top-left-radius: 20px 20px;
+}
+
+#square9,
+#square109 {
+    border-top-right-radius: 20px 20px;
+}
+
+#square90,
+#square190 {
+    border-bottom-left-radius: 20px 20px;
+}
+
+#square99,
+#square199 {
+    border-bottom-right-radius: 20px 20px;
+}
+
+.gray,
+.locked {
+    background-color: gray;
+    border: 2px solid antiquewhite;
+    height: 41px;
+    width: 41px;
+}
+
+.not-allowed {
+    cursor: not-allowed !important;
+}
+
+.opponent-name {
+    transform: translateY(7.5px);
+    color: antiquewhite;
+    text-align: center;
+}
+
+.rotate-button {
+    background-image: url("img/rotate.png");
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    border-radius: 50%;
+    background-color: antiquewhite;
+    transform: translateY(-500px) translateX(1000px);
+}
+
+.rotate-button:hover {
+    cursor: pointer;
+}
+
+.log-container {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    transform: translateY(-600px);
+    background-color: cyan;
+    width: 20%; /* or any width */
+    height: 300px;
+    margin: 0 auto; /* Centers the container itself */
+    margin-top: 0;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.top-sq {
+    border-top-right-radius: 20px 20px;
+    border-top-left-radius: 20px 20px;
+}
+
+.bot-sq {
+    border-bottom-right-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+}
+
+.left-sq {
+    border-bottom-left-radius: 20px 20px;
+    border-top-left-radius: 20px 20px;
+}
+
+.right-sq {
+    border-bottom-right-radius: 20px 20px;
+    border-top-right-radius: 20px 20px;
+}
+
+.log-message {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    transform: translateY(-600px);
+    background-color: blue;
+    width: 20%; /* or any width */
+    height: 40px;
+    margin: 0 auto; /* Centers the container itself */
+    margin-top: 0;
+    border-top-right-radius: 30px 30px;
+    border-top-left-radius: 30px 30px;
+}
+
+.log-item {
+    margin-bottom: 10px; /* Space between log items */
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    background-color: gray;
+    border-radius: 50%; /* Makes it a circle */
+    position: absolute; /* So that you can position it inside the square */
+   
+}
+
+.restart-container {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    transform: translateY(-550px);
+}
+
+img[id="restart"] {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background-color: antiquewhite;
+}
