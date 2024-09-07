@@ -298,7 +298,7 @@ body {
     display: flex;            
     align-items: center;      
     justify-content: center;
-    transform: translateY(-550px);
+    transform: translateY(-1100px) translateX(625px);
 }
 
 img[id="restart"] {
