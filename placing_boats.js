@@ -6,7 +6,17 @@ let lockedSquares = new Set(); // Track all locked squares
 
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get("name");
+    let name = urlParams.get("name");
+    if(!name_check(name)){
+        name = "guest";
+    }
+    function name_check(name){
+        if(name === null) return false;
+        for(let i = 0; i < name.length; i++){
+            if(name[i] !== ' ') return true; //name does not have spaces
+        }
+        return false; //name is just spaces
+    }
     const place_boats = document.getElementById("place-boats");
     const place_boats_msg  = document.createElement("div");
     place_boats_msg.classList.add("place_boats_msg");

@@ -12,6 +12,7 @@ let opp_cnt = 5;
 let board_size = 10;
 let shot_cnt = 0;
 let shuffled_sq = [];
+let isWon = false;
 for(let i = 0; i < 100; i++){
     shuffled_sq.push(i);
 }
@@ -29,7 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const used = JSON.parse(localStorage.getItem('used'));
     console.log(used);
     const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get("name");
+    let name = urlParams.get("name");
+    if(!name_check(name)){
+        name = "guest";
+    }
+    function name_check(name){
+        if(name === null) return false;
+        for(let i = 0; i < name.length; i++){
+            if(name[i] !== ' ') return true; //name is not just spaces
+        }
+        return false; //name is just spaces
+    }
     console.log(name);
     const player_board = document.getElementById("player-board");
     const opponent_board = document.getElementById("opponent-board");
@@ -137,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         for(let n = 100; n < 200; n++){
                             used_circles.add(n);
                         }
+                        isWon = true;
                     }
                 }
             } else{
@@ -144,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 logContainer.appendChild(newLog);
             }
             logContainer.scrollTop = logContainer.scrollHeight;
-            opponent_random_shoot();
+            if(!isWon) opponent_random_shoot();
         });
     }
     random_board();
@@ -227,11 +239,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 logContainer.appendChild(newLog);
                 opp_cnt--;
                 if(opp_cnt === 0){
+                    alert("u lose :(");
                     const logContainer = document.getElementById("log-container");
                     const newLog = document.createElement("div");
                     newLog.textContent = "u lose :(";
                     newLog.classList.add("log-item");
                     logContainer.appendChild(newLog);
+                    for(let n = 100; n < 200; n++){
+                        used_circles.add(n);
+                    }
                 }
             }
         }
