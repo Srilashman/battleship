@@ -326,6 +326,7 @@ document.addEventListener("DOMContentLoaded", function() {
         overlay.style.display = "none";
         pop_up_change_name.style.display = "none";
         error.style.display = "none";
+        close_popup.style.transform = "translateY(-50px)";
     });
 
     confirm_popup.addEventListener("click", function() {
@@ -342,6 +343,7 @@ document.addEventListener("DOMContentLoaded", function() {
             error.style.display = "block";
             return;
         }
+        close_popup.style.transform = "translateY(-50px)";
         name = new_name;
         display_name_container.textContent = name.length >= 15 ? name.slice(0, 12) + "..." : name;
         pop_up_change_name.classList.add("hidden-content");
