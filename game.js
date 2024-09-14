@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
     restart_button.addEventListener("click", function() {
         let ret = confirm("Are you sure you want to restart?")
         if(ret){
-            window.location.href = "placings.html?" + name;
+            window.location.href = "placings.html?name=" + name;
         }
     });
     Object.values(used).forEach(arr => {
