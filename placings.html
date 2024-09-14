@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
     <div class="battleship-container">
         <img src="img/battleship_banner.png" alt="battleship_banner" id="battleship_banner_no_ani">
     </div>
@@ -21,8 +22,17 @@
         
     </div>
     <div class="display-name-container" id="display-name-container">
-        <div class="down-arrow">></div>
+        <div class="down-arrow" id="down-arrow">></div>
         <div id="name-display"></div>
+    </div>
+    <div class="change-name-container" id="change-name-container">
+        <button type="submit" id="change-name-but">CHANGE NAME</button>
+    </div>
+    <div class="change-name-msg" id="change-name-msg">
+        <div id="change-name-msg-text">CHANGE NAME</div>
+        <input type="text" id="change-name" placeholder="CAPTAIN">
+        <button type="submit" id="change-name-submit">CHANGE</button>
+        <button type="submit" id="change-name-cancel">CANCEL</button>   
     </div>
     <script src="placing_boats.js"></script>
 </body>

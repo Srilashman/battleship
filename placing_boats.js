@@ -3,7 +3,7 @@ let num = 5;
 let used = {"Aircraft carrier": [], "Battleship": [], "Destroyer": [], "Submarine": [], "Cruiser": []};
 let isVert = false;
 let lockedSquares = new Set(); // Track all locked squares
-
+let isflipped = false;
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     let name = urlParams.get("name");
@@ -291,4 +291,41 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     const display_name_container = document.getElementById("name-display");
     display_name_container.textContent = name.length >= 15 ? name.slice(0, 12) + "..." : name;
+    const arrow = document.getElementById("down-arrow");
+    const change_name = document.getElementById("change-name-container");
+    change_name.classList.add("hidden-content");
+    const pop_up_change_name = document.getElementById("change-name-msg");
+    pop_up_change_name.classList.add("hidden-content");
+    const overlay = document.getElementById("overlay");
+    arrow.addEventListener("click", function(){
+        if(!isflipped){
+            arrow.classList.add("pressed");
+            change_name.classList.add("flipped");
+            change_name.classList.remove("hidden-content");
+            isflipped = true;
+        }
+        else{
+            arrow.classList.remove("pressed");
+            change_name.classList.remove("flipped");
+            change_name.classList.add("hidden-content");
+            isflipped = false;
+        }
+    });
+    change_name.addEventListener("click", function() {
+        pop_up_change_name.classList.remove("hidden-content");
+        overlay.style.display = "block";
+        pop_up_change_name.style.display = "block";
+    });
+
+    close_popup.addEventListener("click", function() {
+        pop_up_change_name.classList.add("hidden-content");
+        overlay.style.display = "none";
+        pop_up_change_name.style.display = "none";
+    });
+
+    overlay.addEventListener("click", function() {
+        pop_up_change_name.classList.add("hidden-content");
+        overlay.style.display = "none";
+        pop_up_change_name.style.display = "none";
+    });
 });
