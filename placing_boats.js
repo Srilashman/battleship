@@ -297,6 +297,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const pop_up_change_name = document.getElementById("change-name-msg");
     pop_up_change_name.classList.add("hidden-content");
     const overlay = document.getElementById("overlay");
+    const close_popup = document.getElementById("change-name-cancel");
+    const confirm_popup = document.getElementById("change-name-submit");
     arrow.addEventListener("click", function(){
         if(!isflipped){
             arrow.classList.add("pressed");
@@ -314,11 +316,33 @@ document.addEventListener("DOMContentLoaded", function() {
     change_name.addEventListener("click", function() {
         pop_up_change_name.classList.remove("hidden-content");
         overlay.style.display = "block";
-        pop_up_change_name.style.display = "block";
+        pop_up_change_name.classList.add("show-content");
     });
 
     close_popup.addEventListener("click", function() {
         pop_up_change_name.classList.add("hidden-content");
+        (document.getElementById("change-name")).value = null;
+        overlay.style.display = "none";
+        pop_up_change_name.style.display = "none";
+    });
+
+    confirm_popup.addEventListener("click", function() {
+        const new_name = (document.getElementById("change-name")).value;
+        if(new_name.length === 0){
+            alert("Please enter a name");
+            return;
+        }
+        if(!name_check(new_name)){
+            alert("Please enter a valid name");
+            return;
+        }
+        name = new_name;
+        display_name_container.textContent = name.length >= 15 ? name.slice(0, 12) + "..." : name;
+        pop_up_change_name.classList.add("hidden-content");
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('name', name);
+        window.history.replaceState(null, '', newUrl);
+        place_boats_msg.textContent = name.toUpperCase() + ", PLACE YOUR BOATS";
         overlay.style.display = "none";
         pop_up_change_name.style.display = "none";
     });
