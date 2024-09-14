@@ -299,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("overlay");
     const close_popup = document.getElementById("change-name-cancel");
     const confirm_popup = document.getElementById("change-name-submit");
+    const error = document.getElementById("error-msg-container");
     arrow.addEventListener("click", function(){
         if(!isflipped){
             arrow.classList.add("pressed");
@@ -324,16 +325,21 @@ document.addEventListener("DOMContentLoaded", function() {
         (document.getElementById("change-name")).value = null;
         overlay.style.display = "none";
         pop_up_change_name.style.display = "none";
+        error.style.display = "none";
     });
 
     confirm_popup.addEventListener("click", function() {
         const new_name = (document.getElementById("change-name")).value;
         if(new_name.length === 0){
-            alert("Please enter a name");
+            close_popup.style.transform = "translateY(-37px)";
+            error.textContent = "NAME REQUIRED";
+            error.style.display = "block";
             return;
         }
         if(!name_check(new_name)){
-            alert("Please enter a valid name");
+            close_popup.style.transform = "translateY(-37px)";
+            error.textContent = "NAME CANNOT BE EMPTY";
+            error.style.display = "block";
             return;
         }
         name = new_name;
