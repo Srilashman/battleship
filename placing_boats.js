@@ -289,4 +289,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         console.log(used)
     }
+    const display_name_container = document.getElementById("name-display");
+    display_name_container.textContent = name.length >= 15 ? name.slice(0, 12) + "..." : name;
 });

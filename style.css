@@ -314,3 +314,31 @@ img[id="restart"]:hover {
     cursor: pointer;
     background-color: beige;
 }
+
+.display-name-container {
+    transform: translateY(-775px) translateX(1125px);
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.down-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    writing-mode: vertical-rl;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: cyan;
+    margin-right: 25px;
+    margin-left: 10px;
+}
+
+.down-arrow:hover {
+    background-color: darkcyan;
+}
